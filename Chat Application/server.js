@@ -39,8 +39,36 @@ const server = net.createServer((socket) => {
         const sender = clients.get(socket);
 
         if (msg.startsWith("/msg")) {
-            socket.write("DM:")
+            const parts = msg.split(" ");
+
+            if (parts.length < 3) {
+                socket.write(
+                    "Wrong command.\nTry: /msg <username> <message>\n",
+                );
+                return;
+            }
+
+            const targetUsername = parts[1];
+            const message = parts.slice(2).join(" ");
+
+            const targetSocket = getSocketByUsername(targetUsername);
+
+            if (!targetSocket) {
+                socket.write("User not found.\n");
+                return;
+            }
+
+            if (targetSocket === socket) {
+                socket.write("You can't message yourself.\n");
+                return;
+            }
+
+            targetSocket.write(`[DM] ${sender}: ${message}\n`);
+            socket.write(`[DM -> ${targetUsername}] ${message}\n`);
+            return;
         }
+
+        broadcastMessage(`${sender}: ${msg}`, socket);
     });
 
     socket.on("end", () => {
@@ -78,9 +106,24 @@ function broadcastSysMsg(msg, excludedSocket) {
     }
 }
 
-function parseMsg(data, socket) {
-
+function getSocketByUsername(username) {
+    for (const [socket, name] of clients) {
+        if (name === username) {
+            return socket;
+        }
+    }
+    return null;
 }
+
+function broadcastMessage(msg, excludedSocket) {
+    for (const [clientSocket] of clients) {
+        if (clientSocket !== excludedSocket) {
+            clientSocket.write(msg + "\n");
+        }
+    }
+}
+
+function parseMsg(data, socket) {}
 
 server.listen(3000, () => {
     console.log("Server listening on port 3000.");
