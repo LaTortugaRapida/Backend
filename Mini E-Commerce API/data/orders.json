@@ -1,0 +1,38 @@
+[
+  {
+    "id": 2,
+    "userId": 5,
+    "items": [
+      {
+        "productId": 1,
+        "name": "The Pragmatic Programmer",
+        "quantity": 1,
+        "unitPrice": 34.99
+      }
+    ],
+    "total": 34.99,
+    "status": "pending",
+    "createdAt": "2026-09-21T12:59:37.148Z"
+  },
+  {
+    "id": 3,
+    "userId": 5,
+    "items": [
+      {
+        "productId": 2,
+        "name": "Clean Code",
+        "quantity": 3,
+        "unitPrice": 24.99
+      },
+      {
+        "productId": 4,
+        "name": "USB-C Hub",
+        "quantity": 1,
+        "unitPrice": 29.99
+      }
+    ],
+    "total": 104.96,
+    "status": "pending",
+    "createdAt": "2026-09-21T13:09:08.702Z"
+  }
+]

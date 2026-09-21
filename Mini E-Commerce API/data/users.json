@@ -1,26 +1,38 @@
 [
-    {
-        "id": 1,
-        "username": "Bob",
-        "passwordHash": "$2b$10$xPJfrJIsrkFuMbNxybEwu.OChbfqpZr3jUQqsT4ZgU/tH6yyqKYeq",
-        "role": "admin"
-    },
-    {
-        "id": 2,
-        "username": "Ann",
-        "passwordHash": "$2b$10$LwDK2ywx6Powx3l1HG36O.ocXSGbwwNzb6LIQYDPQe9tdnxZZS3Nq",
-        "role": "customer"
-    },
-    {
-        "id": 3,
-        "username": "Joe",
-        "passwordHash": "$2b$10$fevnWneqVtcaZImg829d0.fFEYuGIVC3nHsfFKHEpDVQ754sMpYcK",
-        "role": "customer"
-    },
-    {
-        "id": 4,
-        "username": "Sally",
-        "passwordHash": "$2b$10$kD..AIRP2duv2tT08WrRHufXNvaJyGgBNsu8nuCJ1ThVWRYQkVfSW",
-        "role": "customer"
-    }
+  {
+    "id": 1,
+    "username": "Bob",
+    "passwordHash": "$2b$10$xPJfrJIsrkFuMbNxybEwu.OChbfqpZr3jUQqsT4ZgU/tH6yyqKYeq",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "username": "Ann",
+    "passwordHash": "$2b$10$LwDK2ywx6Powx3l1HG36O.ocXSGbwwNzb6LIQYDPQe9tdnxZZS3Nq",
+    "role": "customer"
+  },
+  {
+    "id": 3,
+    "username": "Joe",
+    "passwordHash": "$2b$10$fevnWneqVtcaZImg829d0.fFEYuGIVC3nHsfFKHEpDVQ754sMpYcK",
+    "role": "customer"
+  },
+  {
+    "id": 4,
+    "username": "Sally",
+    "passwordHash": "$2b$10$kD..AIRP2duv2tT08WrRHufXNvaJyGgBNsu8nuCJ1ThVWRYQkVfSW",
+    "role": "customer"
+  },
+  {
+    "id": 5,
+    "username": "Maria",
+    "passwordHash": "$2b$10$QVlY4I4w3JTMn1rOZZ2LKO7FthdZpf6yNad0Woige0GiXLZQLiHZO",
+    "role": "customer"
+  },
+  {
+    "id": 6,
+    "username": "Marianna",
+    "passwordHash": "$2b$10$KH6zd1gx8DlbH5o/9WKaQecfIRDMceskxMVtWtgRVJntkWFNtFYgm",
+    "role": "customer"
+  }
 ]

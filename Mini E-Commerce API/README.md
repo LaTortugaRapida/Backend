@@ -1,6 +1,6 @@
 # Mini E-Commerce API
 
-A small e-commerce REST API built with Express, JWT authentication, and JSON file storage (no database).
+A small e-commerce API and EJS web interface built with Express, JWT authentication, and JSON file storage (no database).
 
 ## How to run
 
@@ -29,16 +29,32 @@ An admin account must be seeded by hand in `data/users.json` before first use �
 - **username:** `bob`
 - **password:** `<password>`
 
+## Web views
+
+The server also renders simple EJS pages:
+
+- `GET /view/products` — list products and filter by category
+- `GET /view/products/:id` — show one product
+- `GET /view/products/new` — product creation form for an authenticated admin
+- `GET /view/login` — login form
+
+The login page stores the JWT returned by `POST /auth/login`. The product creation form sends that token to `POST /products`.
+
 ## Project structure
 
 ```
 server.js               Express app setup, mounts the routers
+views/                   EJS templates for the web interface
+  login.ejs
+  products/              product list, details, and creation pages
+  partials/              shared header and footer
 middlewares/
   auth.js                authenticate (JWT verify -> req.user) and authorize (role check)
 routes/
   auth.js                 POST /auth/register, POST /auth/login
   products.js               GET/POST/PUT/DELETE /products, search + pagination
   orders.js                   POST/GET /orders, PATCH + DELETE /orders/:id
+  views.js                    rendered web pages under /view
 utils/
   fileDB.js                readData / writeData helpers for the JSON "tables"
 data/

@@ -1,0 +1,75 @@
+<%- include('../partials/header', { title: 'Add New Product' }) %>
+
+<h1>Add New Product</h1>
+
+<div id="error-message" style="color: red; display: none;"></div>
+
+<form id="new-product-form">
+  <div>
+    <label for="name">Product Name:</label>
+    <input type="text" id="name" name="name" required />
+  </div>
+  
+  <div>
+    <label for="price">Price ($):</label>
+    <input type="number" id="price" name="price" step="0.01" required />
+  </div>
+
+  <div>
+    <label for="stock">Stock Quantity:</label>
+    <input type="number" id="stock" name="stock" required />
+  </div>
+
+  <div>
+    <label for="category">Category:</label>
+    <input type="text" id="category" name="category" required />
+  </div>
+
+  <button type="submit">Create Product</button>
+</form>
+
+<script>
+  document.getElementById('new-product-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const token = localStorage.getItem('jwtToken');
+    const errorDiv = document.getElementById('error-message');
+
+    if (!token) {
+      errorDiv.innerText = 'You must be logged in as an admin to perform this action.';
+      errorDiv.style.display = 'block';
+      return;
+    }
+
+    const bodyData = {
+      name: document.getElementById('name').value,
+      price: parseFloat(document.getElementById('price').value),
+      stock: parseInt(document.getElementById('stock').value, 10),
+      category: document.getElementById('category').value
+    };
+
+    try {
+      const response = await fetch('/products', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(bodyData)
+      });
+
+      if (response.ok) {
+        window.location.href = '/view/products';
+      } else {
+        const err = await response.json();
+        errorDiv.innerText = err.error || 'Failed to create product.';
+        errorDiv.style.display = 'block';
+      }
+    } catch (err) {
+      errorDiv.innerText = 'Network error occurred.';
+      errorDiv.style.display = 'block';
+    }
+  });
+</script>
+
+<%- include('../partials/footer') %>

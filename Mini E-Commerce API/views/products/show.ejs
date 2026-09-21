@@ -1,0 +1,20 @@
+<%- include('../partials/header', { title: product.name }) %>
+
+<h1><%= product.name %></h1>
+
+<div class="product-details">
+  <p><strong>Price:</strong> $<%= product.price.toFixed(2) %></p>
+  <p><strong>Category:</strong> <%= product.category || 'Uncategorized' %></p>
+  <p>
+    <strong>Stock:</strong> 
+    <span class="<%= product.stock < 5 ? 'stock-low-text' : '' %>">
+      <%= product.stock %> <%= product.stock < 5 ? '(Low Stock!)' : '' %>
+    </span>
+  </p>
+</div>
+
+<p>
+  <a href="/view/products">&larr; Back to Products</a>
+</p>
+
+<%- include('../partials/footer') %>

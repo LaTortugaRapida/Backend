@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "The Pragmatic Programmer",
+    "price": 34.99,
+    "category": "books",
+    "stock": 11
+  },
+  {
+    "id": 2,
+    "name": "Clean Code",
+    "price": 24.99,
+    "category": "books",
+    "stock": 5
+  },
+  {
+    "id": 3,
+    "name": "Mechanical Keyboard",
+    "price": 89.99,
+    "category": "electronics",
+    "stock": 5
+  },
+  {
+    "id": 4,
+    "name": "USB-C Hub",
+    "price": 29.99,
+    "category": "electronics",
+    "stock": 19
+  }
+]

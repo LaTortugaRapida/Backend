@@ -1,0 +1,42 @@
+<%- include('../partials/header', { title: 'Products' }) %>
+
+<h1>Products</h1>
+
+<form action="/view/products" method="GET" style="margin-bottom: 20px;">
+  <label for="category">Filter by Category:</label>
+  <select name="category" id="category" onchange="this.form.submit()">
+    <option value="">All Categories</option>
+    <option value="electronics" <%= typeof selectedCategory !== 'undefined' && selectedCategory === 'electronics' ? 'selected' : '' %>>Electronics</option>
+    <option value="books" <%= typeof selectedCategory !== 'undefined' && selectedCategory === 'books' ? 'selected' : '' %>>Books</option>
+  </select>
+  <noscript><button type="submit">Filter</button></noscript>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Stock</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (Array.isArray(products) && products.length > 0) { %>
+      <% products.forEach(function(product) { %>
+        <tr class="<%= product.stock < 5 ? 'stock-low' : '' %>">
+          <td><%= product.name %></td>
+          <td>$<%= product.price.toFixed(2) %></td>
+          <td><%= product.stock %></td>
+          <td><a href="/view/products/<%= product.id %>">View</a></td>
+        </tr>
+      <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="4">No products found.</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<%- include('../partials/footer') %>
